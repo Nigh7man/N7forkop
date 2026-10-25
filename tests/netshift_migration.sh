@@ -31,12 +31,23 @@ assert.equal(sections.n7_zapret_media.nfqws_opt,z);
 assert.equal(sections.n7_zapret_voice.nfqws_opt,z);
 assert.ok(sections.n7_zapret_voice.ports.includes('19294-19344'));
 assert.equal(config.section[0]['.name'],'n7_zapret_media');
+assert.equal(sections.Sweden.action,'connection');
+assert.deepEqual(sections.Sweden.domain.split(/\s+/).filter(Boolean), [
+  'example.com','video.example.com','chat.example.org','sub.example.net'
+]);
+assert.deepEqual(sections.Sweden.ip_cidr.split(/\s+/).filter(Boolean), [
+  '192.0.2.0/24','198.51.100.0/24','203.0.113.1/32'
+]);
+assert.equal('user_domains_text' in sections.Sweden,false);
+assert.ok(!sections.Sweden.domain.includes('inactive-other.example'));
+assert.equal('user_domain_list_type' in sections.Sweden,false);
 assert.equal(sections.main.action,'connection');
 assert.deepEqual(sections.main.selector_proxy_links,['vless://example.invalid:443?encryption=none#example']);
 assert.ok(sections.main.domain.includes('google_ai.example'));
 assert.ok(!sections.main.domain.includes('full:google_ai.example'),'NetShift domains must stay suffix matches');
 assert.ok(sections.main.ip_cidr.includes('203.0.113.4/32'));
 assert.equal('user_domains' in sections.main,false);
+assert.ok(!sections.main.domain.includes('inactive.example'));
 assert.equal('global_proxy' in sections.main,false);
 assert.deepEqual(sections.selector.selector_proxy_links,['vless://one','vless://two']);
 assert.deepEqual(sections.urltest.selector_proxy_links,['trojan://one','ss://two']);

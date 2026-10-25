@@ -40,6 +40,51 @@ function migrate_list(section, destination, original) {
     if (length(list) > 0) section[destination] = join("\n", uniq(list));
     delete section[original];
 }
+// Mirrors NetShift 0.9.6's comma/whitespace text-list parsing and // comments.
+// The source service uses only the active list type; never merge an inactive
+// text field into a dynamic field (or vice versa).
+function netshift_items(raw) {
+    let result = [];
+    for (let line in split(s(raw), "\n")) {
+        let comment = index(line, "//");
+        if (comment >= 0) line = substr(line, 0, comment);
+        line = replace(line, /[, \t\r]+/g, "\n");
+        line = replace(line, / +/g, "\n");
+        for (let item in split(line, "\n")) {
+            item = trim(item);
+            if (item != "") push(result, item);
+        }
+    }
+    return uniq(result);
+}
+function migrate_netshift_rule_list(section, list_kind, out) {
+    let id = get(section, ".name");
+    let domain = list_kind == "domains";
+    let prefix = domain ? "user_domain" : "user_subnet";
+    let type_key = prefix + "_list_type";
+    let dynamic_key = domain ? "user_domains" : "user_subnets";
+    let text_key = dynamic_key + "_text";
+    let target_key = domain ? "domain_suffix" : "ip_cidr";
+    let selected = get(section, type_key) || "disabled";
+    let values_in = [];
+    if (selected == "text")
+        values_in = netshift_items(get(section, text_key));
+    else if (selected == "dynamic")
+        values_in = netshift_items(arr(section, dynamic_key));
+    else if (selected != "disabled") {
+        push(out.blockers, "section " + id + ": unsupported " + type_key + "=" + selected);
+    }
+    if (selected != "disabled" && length(values_in) == 0)
+        push(out.warnings, "section " + id + ": enabled " + type_key + " has no valid entries");
+    if (length(values_in) > 0) {
+        let result = arr(section, target_key);
+        for (let v in values_in) push(result, v);
+        section[target_key] = uniq(result);
+    }
+    delete section[dynamic_key];
+    delete section[text_key];
+    delete section[type_key];
+}
 function model_from_input(input) {
     let sections = input.section || [];
     if (type(sections) != "array") sections = [ sections ];
@@ -54,6 +99,10 @@ function fix_settings(model, out) {
         push(out.blockers, "IPv6 routing is enabled: needs a checked mapping");
     if (yes(get(st, "block_doh")))
         push(out.blockers, "DoH blocking is enabled: needs a checked mapping");
+    if (length(arr(st, "source_network_interfaces")) > 1)
+        push(out.warnings, "Multiple ingress interfaces detected; verify LAN/VPN routing after migration");
+    if (yes(get(st, "enable_yacd_wan_access")))
+        push(out.blockers, "WAN dashboard access requires independent security review");
     if (yes(get(st, "enable_output_network_interface")) ||
         yes(get(st, "enable_badwan_interface_monitoring")))
         push(out.blockers, "Custom output/WAN monitoring requires manual mapping");
@@ -86,14 +135,9 @@ function fix_section(section, out) {
         urltest_text:1, interface:1, outbound:1 };
     if (pt != "" && !supported_proxy[pt])
         push(out.blockers, "section " + id + ": unsupported proxy_config_type=" + pt);
-    // NetShift user_domains are suffix matches, not exact full: matches.
-    let suffixes = lines(section.domain_suffix || "");
-    for (let v in lines(section.user_domains || "")) push(suffixes, v);
-    if (length(suffixes) > 0) section.domain_suffix = uniq(suffixes);
-    delete section.user_domains;
-    migrate_list(section, "ip_cidr", "user_subnets");
-    delete section.user_domain_list_type;
-    delete section.user_subnet_list_type;
+    // NetShift user domains are SUFFIX matches. Honor active dynamic/text modes.
+    migrate_netshift_rule_list(section, "domains", out);
+    migrate_netshift_rule_list(section, "subnets", out);
     if (pt == "selector_text" || pt == "urltest_text") {
         let old_key = pt == "selector_text" ? "selector_proxy_links_text" : "urltest_proxy_links_text";
         let new_key = pt == "selector_text" ? "selector_proxy_links" : "urltest_proxy_links";

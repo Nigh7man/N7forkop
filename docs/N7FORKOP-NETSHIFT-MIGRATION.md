@@ -14,6 +14,12 @@ changes DNS, manipulates nftables, or enables Zapret.
 - Legacy Zapret owns NFQUEUE 200; Forkop's managed queues start at 4000.
   Even different queue IDs do **not** make concurrent packet processing safe.
 
+The real NetShift config uses 13 source IP exclusions and a long Sweden
+user_domains_text list. Source exclusions currently block rendering until
+their semantics are reviewed. The longer file cannot yet be completely read
+by the N7 router_config tool (400-line limit); this document makes no claim
+to have fully audited the private live configuration.
+
 No private server URLs, UUIDs, client secrets, device IP lists, or live
 NFQWS_OPT from the router are committed to this public repository.
 
@@ -26,7 +32,11 @@ normalizing NetShift-specific differences:
 - Multiple subscription_url entries; user agent is converted into individual
   Forkop child subscription entries.
 - VPN interface sections, subnets, communities and fully_routed_ips.
-- user_domains -> Forkop suffix domain rules; user_subnets -> Forkop ip_cidr.
+- user_domains and user_domains_text -> domain_suffix (real NetShift suffix semantics),
+  and user_subnets/user_subnets_text -> Forkop ip_cidr, honoring
+  user_domain_list_type/user_subnet_list_type active modes.
+  An inactive mode is not silently imported. Multi-line entries,
+  commas, whitespace and inline // comments are supported.
 - Global DNS over selected proxy -> dns_detour_enabled and section.
 - dns_server and bootstrap_dns_server are converted into UCI lists.
 - Optional /opt/zapret/config NFQWS_OPT is copied **as a whole**, WITHOUT
