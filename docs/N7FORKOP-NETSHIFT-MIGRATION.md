@@ -15,10 +15,20 @@ changes DNS, manipulates nftables, or enables Zapret.
   Even different queue IDs do **not** make concurrent packet processing safe.
 
 The real NetShift config uses 13 source IP exclusions and a long Sweden
-user_domains_text list. Source exclusions currently block rendering until
-their semantics are reviewed. The longer file cannot yet be completely read
-by the N7 router_config tool (400-line limit); this document makes no claim
-to have fully audited the private live configuration.
+user_domains_text list, on both br-lan and NanoPiWG ingress interfaces. The
+router_config tool read all 685 lines with redaction; live credentials were
+never exported.
+
+The new n7_source_bypass section is the *first active rule*. It carries the
+existing source IP exclusions in fully_routed_ips; Forkop's nft source
+fast-path bypasses sing-box for real destinations, keeps FakeIP intercepted,
+and its sing-box generator inserts an early source_ip_cidr direct rule and
+source-aware DNS. This is only a **proposed behavioral mapping**: changes in
+DNS answers or the interaction with standalone Zapret and routed VPN
+interfaces still require hands-on testing before installation.
+
+Unsupported source values (IPv6, invalid, broad prefixes below /24), and
+name collisions, block rendering rather than dropping affected devices.
 
 No private server URLs, UUIDs, client secrets, device IP lists, or live
 NFQWS_OPT from the router are committed to this public repository.
@@ -50,9 +60,9 @@ UDP/STUN endpoints, QUIC and FakeIP interactions must be measured on the
 actual router **before switching**.
 
 The converter refuses to render when it finds important unsupported options
-such as routing_excluded_ips, global_proxy, enabled IPv6 routing, DoH
-blocking, unsupported section/connection types, or risky shell syntax in a
-standalone Zapret strategy. See the plan JSON for the exact blocker.
+such as invalid source-IP exclusions, global_proxy, enabled IPv6 routing,
+DoH blocking, unsupported section/connection types, or risky shell syntax in
+a standalone Zapret strategy. See the plan JSON for the exact blocker.
 
 ## Prepare preview without affecting live traffic
 
@@ -117,6 +127,19 @@ bash tests/netshift_migration.sh
 
 This test checks the in-memory migration, preserved strategies, disabled new
 sections, DNS, subscriptions/VPN and fail-closed unsupported options.
+
+The independent source-bypass regression test generates actual sing-box
+config plus mocked nftables commands, verifying that first-priority
+source-address bypass rules precede VPN capture, and that FakeIP is *not*
+sent out unmodified:
+
+~~~sh
+bash tests/netshift_source_bypass.sh
+~~~
+
+This test cannot prove behavior on a live network, particularly when
+the original standalone Zapret, the router's wireguard interface or
+unusual DNS clients are involved.
 For an OpenWrt-specific smoke test, render fixture configuration and verify
 that UCI parses it in an isolated temporary directory. Both workflows leave
 the running router unchanged.

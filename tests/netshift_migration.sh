@@ -30,7 +30,14 @@ assert.deepEqual(sections.n7_zapret_media.community_lists,['youtube','discord'])
 assert.equal(sections.n7_zapret_media.nfqws_opt,z);
 assert.equal(sections.n7_zapret_voice.nfqws_opt,z);
 assert.ok(sections.n7_zapret_voice.ports.includes('19294-19344'));
-assert.equal(config.section[0]['.name'],'n7_zapret_media');
+assert.equal(config.section[0]['.name'],'n7_source_bypass');
+assert.equal(sections.n7_source_bypass.action,'bypass');
+assert.equal(sections.n7_source_bypass.enabled,'1');
+assert.equal(sections.n7_source_bypass.fully_routed_ips.length,13);
+assert.equal(sections.n7_source_bypass.fully_routed_ips[0],'192.0.2.65');
+assert.equal('routing_excluded_ips' in config.settings,false);
+assert.equal(sections.n7_zapret_media.enabled,'0');
+assert.equal(sections.n7_zapret_voice.enabled,'0');
 assert.equal(sections.Sweden.action,'connection');
 assert.deepEqual(sections.Sweden.domain.split(/\s+/).filter(Boolean), [
   'example.com','video.example.com','chat.example.org','sub.example.net'
@@ -79,7 +86,7 @@ fi
 node - "$F" "$TMP/bad.json" <<'NODE'
 const fs=require('node:fs');
 const p=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
-p.settings.routing_excluded_ips=['192.168.78.17'];
+p.settings.routing_excluded_ips=['999.168.78.17'];
 p.section[0].global_proxy='1';
 fs.writeFileSync(process.argv[3],JSON.stringify(p));
 NODE
@@ -101,4 +108,15 @@ if ucode -L "$LIB" "$UC" fixture-render "$TMP/bad.json" "$Z" > "$TMP/no-output" 
   exit 1
 fi
 [ ! -s "$TMP/no-output" ] || { echo 'FAIL: renderer leaked partial draft' >&2; exit 1; }
+# Reject accidental broad/IPv6 exclusions rather than route traffic unexpectedly.
+node - "$F" "$TMP/broad.json" <<'NODE'
+const fs=require('node:fs');
+const config=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+config.settings.routing_excluded_ips=['192.0.2.0/20','2001:db8::1'];
+fs.writeFileSync(process.argv[3],JSON.stringify(config));
+NODE
+if ucode -L "$LIB" "$UC" fixture-plan "$TMP/broad.json" "$Z" >/dev/null; then
+  echo 'FAIL: broad IPv4 or IPv6 source should block migration' >&2
+  exit 1
+fi
 printf '%s\n' 'NetShift migration unit tests passed'

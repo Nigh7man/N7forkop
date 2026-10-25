@@ -3,6 +3,7 @@
 let fs = require("fs");
 let uci = require("core.uci");
 let legacy = require("config.migration");
+let ip = require("core.ip");
 function s(v) { return v == null ? "" : "" + v; }
 function o(v) { return type(v) == "object" ? v : {}; }
 function get(v, key) {
@@ -109,8 +110,8 @@ function fix_settings(model, out) {
     if (yes(get(st, "dns_hijack")) || yes(get(st, "block_leaks")) ||
         yes(get(st, "bypass_excluded_ips")))
         push(out.blockers, "Newer DNS/capture/kill-switch settings need separate mapping");
-    if (length(arr(st, "routing_excluded_ips")) > 0)
-        push(out.blockers, "routing_excluded_ips is nonempty: source/FakeIP bypass must be reviewed");
+    // Source exclusions are deliberately processed separately into a first
+    // enabled bypass section, before any VPN capture rule.
     if (length(arr(st, "dns_pool_server")) > 0 || length(arr(st, "dns_forward")) > 0)
         push(out.blockers, "DNS pool/zone forwarding is not supported by NetShift 0.9.6 migration");
     if (yes(get(st, "dns_via_outbound"))) {
@@ -118,7 +119,7 @@ function fix_settings(model, out) {
         st.dns_detour_section = get(st, "dns_outbound_section") || "main";
     }
     for (let key in [ "dns_via_outbound", "dns_outbound_section", "enable_ipv6",
-        "block_doh", "update_notice", "routing_excluded_ips" ]) delete st[key];
+        "block_doh", "update_notice" ]) delete st[key];
 }
 function fix_section(section, out) {
     let id = get(section, ".name");
@@ -237,6 +238,62 @@ function add_media_sections(model, config, out) {
     push(out.warnings, "Zapret sections stay disabled until standalone Zapret is stopped");
     push(out.warnings, "Original nfqws strategy kept, but Forkop packet selection needs live verification");
 }
+// Forkop's fully_routed_ips on a first-in-order bypass section provides:
+// 1) an nftables source-address fast path for real destinations,
+// 2) FakeIP exception (FakeIP remains intercepted, not sent to WAN),
+// 3) an early source_ip_cidr -> direct rule in sing-box,
+// 4) source-aware DNS handling for excluded LAN clients.
+// This matches NetShift's early source-IP exclusion priority. The DNS behavior
+// can differ; end-to-end validation remains mandatory.
+function add_source_exclusion_bypass(model, out) {
+    let raw_values = arr(model.settings, "routing_excluded_ips");
+    if (length(raw_values) == 0) {
+        delete model.settings.routing_excluded_ips;
+        return;
+    }
+    let normalized = [], invalid = 0;
+    for (let raw in raw_values) {
+        raw = trim(s(raw));
+        if (raw == "") { invalid++; continue; }
+        if (ip.ip_family(raw) != 4) { invalid++; continue; }
+        // Restrict broad source subnets: a mistake here would force large
+        // parts of a user's home through a different DNS/routing mode.
+        let slash = index(raw, "/");
+        if (slash >= 0 && int(substr(raw, slash + 1)) < 24) {
+            invalid++; continue;
+        }
+        push(normalized, raw);
+    }
+    if (invalid > 0 || length(normalized) != length(raw_values)) {
+        push(out.blockers, "routing_excluded_ips: " + invalid +
+            " invalid/IPv6/overly-broad entries; review before migration");
+        delete model.settings.routing_excluded_ips;
+        return;
+    }
+    normalized = uniq(normalized);
+    if (length(normalized) != length(raw_values))
+        push(out.warnings, "routing_excluded_ips contains duplicate entries; de-duplicated in preview");
+    for (let section in model.sections)
+        if (get(section, ".name") == "n7_source_bypass") {
+            push(out.blockers, "Reserved section n7_source_bypass already exists");
+            delete model.settings.routing_excluded_ips;
+            return;
+        }
+    let bypass_section = {
+        ".name": "n7_source_bypass",
+        ".type": "section",
+        enabled: "1",
+        label: "N7 NetShift source-IP exclusions",
+        action: "bypass",
+        fully_routed_ips: normalized
+    };
+    let next = [ bypass_section ];
+    for (let section in model.sections) push(next, section);
+    model.sections = next;
+    delete model.settings.routing_excluded_ips;
+    push(out.warnings,
+        "Source-IP exclusions mapped to top-priority Forkop bypass; verify source-aware DNS/FakeIP before cutover");
+}
 function migrate(input, zapret_content) {
     let out = { blockers: [], warnings: [], model: null, summary: null };
     if (!input || input.settings == null)
@@ -247,6 +304,7 @@ function migrate(input, zapret_content) {
     fix_settings(model, out);
     for (let section in model.sections) fix_section(section, out);
     add_media_sections(model, zapret_content, out);
+    add_source_exclusion_bypass(model, out);
     let res = legacy.migrate_model(model, "podkop");
     out.model = res.model;
     let actions = {};
