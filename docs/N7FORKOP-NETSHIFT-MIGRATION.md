@@ -28,7 +28,7 @@ NFQWS_OPT from the router are committed to this public repository.
 It uses the **existing upstream Forkop legacy Podkop converter** after
 normalizing NetShift-specific differences:
 
-- Direct proxy_string and selector/urltest text lists.
+- Direct proxy_string and selector/urltest text lists, including NetShift's implicit proxy_config_type=url default.
 - Multiple subscription_url entries; user agent is converted into individual
   Forkop child subscription entries.
 - VPN interface sections, subnets, communities and fully_routed_ips.

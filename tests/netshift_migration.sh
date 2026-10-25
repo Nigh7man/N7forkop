@@ -41,6 +41,11 @@ assert.deepEqual(sections.Sweden.ip_cidr.split(/\s+/).filter(Boolean), [
 assert.equal('user_domains_text' in sections.Sweden,false);
 assert.ok(!sections.Sweden.domain.includes('inactive-other.example'));
 assert.equal('user_domain_list_type' in sections.Sweden,false);
+assert.equal(sections.FInland.action,'connection');
+assert.deepEqual(sections.FInland.selector_proxy_links,['vless://example.invalid:443#finland']);
+assert.ok(sections.FInland.domain.includes('example.org'));
+assert.equal('proxy_string' in sections.FInland,false);
+assert.equal('proxy_config_type' in sections.FInland,false);
 assert.equal(sections.main.action,'connection');
 assert.deepEqual(sections.main.selector_proxy_links,['vless://example.invalid:443?encryption=none#example']);
 assert.ok(sections.main.domain.includes('google_ai.example'));

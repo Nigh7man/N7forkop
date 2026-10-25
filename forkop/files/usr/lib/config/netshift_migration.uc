@@ -125,6 +125,12 @@ function fix_section(section, out) {
     if (id == "") { push(out.blockers, "unnamed NetShift section"); return; }
     let ct = get(section, "connection_type");
     let pt = get(section, "proxy_config_type");
+    // NetShift 0.9.6 config_get(proxy_config_type) defaults to "url"
+    // for proxy sections, even when the field is absent in UCI.
+    if (ct == "proxy" && pt == "") {
+        pt = "url";
+        section.proxy_config_type = pt;
+    }
     if (yes(get(section, "global_proxy")))
         push(out.blockers, "section " + id + ": global_proxy requires a reviewed default route");
     delete section.global_proxy;
