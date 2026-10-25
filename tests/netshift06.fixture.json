@@ -1,0 +1,11 @@
+{
+ "settings":{".name":"settings",".type":"settings","dns_type":"udp","dns_server":"77.88.8.8","bootstrap_dns_server":"1.1.1.1","source_network_interfaces":["br-lan"],"dns_via_outbound":"1","dns_outbound_section":"main","enable_ipv6":"0","block_doh":"0","update_interval":"1d"},
+ "section":[
+  {".name":"main",".type":"section","connection_type":"proxy","proxy_config_type":"url","proxy_string":"vless://example.invalid:443?encryption=none#example","community_lists":["russia_inside"],"user_domains":["google_ai.example"],"user_subnets":["203.0.113.4/32"],"global_proxy":"0"},
+  {".name":"subscriptions",".type":"section","connection_type":"proxy","proxy_config_type":"subscription","subscription_url":["https://example.invalid/feed?a=1","https://example.invalid/feed2?a=2"],"subscription_user_agent":"ExampleClient/1.0","subscription_update_interval":"6h","community_lists":["telegram"]},
+  {".name":"selector",".type":"section","connection_type":"proxy","proxy_config_type":"selector_text","selector_proxy_links_text":"vless://one\nvless://two\n#comment\nvless://one"},
+  {".name":"urltest",".type":"section","connection_type":"proxy","proxy_config_type":"urltest_text","urltest_proxy_links_text":"trojan://one\nss://two","urltest_check_interval":"3m"},
+  {".name":"vpn",".type":"section","connection_type":"vpn","proxy_config_type":"interface","interface":"awg0","fully_routed_ips":["192.168.78.65"]},
+  {".name":"direct",".type":"section","connection_type":"exclusion","user_subnets":["198.51.100.4/32"]}
+ ]
+}
