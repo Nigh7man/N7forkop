@@ -1270,6 +1270,13 @@ assert(route_rule(matchers, r => r.inbound == "proxy-mixed-in" && r.outbound == 
 let source_dns_in = inbound(matchers, "source-dns-in");
 assert(source_dns_in && source_dns_in.type == "direct" && source_dns_in.listen == "::" && source_dns_in.listen_port == 1603, "source-aware DNS uses one dual-stack inbound");
 assert(route_rule(matchers, r => r.action == "sniff" && contains(r.inbound, "source-dns-in")) != null, "source-aware DNS inbound is sniffed before hijacking");
+let source_hijack = route_rule_index(matchers, r => r.action == "hijack-dns" && contains(r.inbound, "source-dns-in"));
+let sniff_index = route_rule_index(matchers, r => r.action == "sniff" && contains(r.inbound, "source-dns-in"));
+let port_hijack_index = route_rule_index(matchers, r => r.action == "hijack-dns" && r.port == 53);
+assert(source_hijack > sniff_index && source_hijack < port_hijack_index,
+    "port-1603 source DNS must be hijacked by inbound tag, even for unrecognized TCP DNS");
+assert(route_rule(defaults, r => r.action == "hijack-dns" && contains(r.inbound, "source-dns-in")) == null,
+    "do not install source DNS hijack if no devices require source-aware DNS");
 assert(dns_server(matchers, r => r.tag == "dnsmasq-server" && r.type == "udp" && r.server == "127.0.0.1" && r.server_port == 53) != null, "source-aware DNS uses the existing dnsmasq instance");
 let bypass_dnsmasq = dns_rule(matchers, r =>
     r.type == "logical" && r.server == "dnsmasq-server" &&
