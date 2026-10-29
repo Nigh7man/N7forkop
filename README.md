@@ -1,4 +1,17 @@
-# Forkop (Podkop Plus)
+# N7Flow
+
+**N7Flow** — имя пользовательского интерфейса этого форка для управления VPN,
+DNS и маршрутизацией. В основе лежит исходный [Forkop](https://github.com/ushan0v/forkop)
+(ранее Podkop Plus).
+
+**Совместимость:** системные идентификаторы пока остаются прежними:
+пакеты forkop / luci-app-forkop, служба /etc/init.d/forkop,
+команда /usr/bin/forkop, конфигурация /etc/config/forkop и адрес
+LuCI /admin/services/forkop. Это позволяет обновить интерфейс
+без перезапуска VPN и перенастройки существующих правил.
+
+## Исходный Forkop (Podkop Plus)
+
 
 [![Star](https://img.shields.io/github/stars/ushan0v/forkop?style=social)](https://github.com/ushan0v/forkop/stargazers)
 [![Releases](https://img.shields.io/github/v/release/ushan0v/forkop?label=releases)](https://github.com/ushan0v/forkop/releases)
@@ -6,6 +19,8 @@
 [![AI Assistant](https://img.shields.io/badge/Telegram-Forkop%20%7C%20AI%20Assistant-2CA5E0?logo=telegram\&logoColor=white)](https://t.me/forkop_aibot)
 
 > **Forkop — это бывший Podkop Plus.** Проект переименован и продолжает развиваться как независимый форк [Podkop](https://github.com/itdoginfo/podkop).
+
+**Примечание:** ссылки на установку и поддержку ниже относятся к исходному Forkop. Сборка N7Flow пока сохраняет совместимые имена пакетов и ставится поверх существующего Forkop с предварительной резервной копией.
 
 ### Установка
 

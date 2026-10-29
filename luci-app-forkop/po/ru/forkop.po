@@ -1,15 +1,15 @@
-# RU translations for FORKOP package.
-# Copyright (C) 2026 THE FORKOP COPYRIGHT HOLDER
-# This file is distributed under the same license as the FORKOP package.
-# ushan0v, 2026.
+# RU translations for N7Flow package.
+# Copyright (C) 2026 THE N7Flow COPYRIGHT HOLDER
+# This file is distributed under the same license as the N7Flow package.
+# Automatically generated, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: FORKOP\n"
+"Project-Id-Version: N7Flow\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-18 07:01+0300\n"
-"PO-Revision-Date: 2026-07-18 07:01+0300\n"
-"Last-Translator: ushan0v\n"
+"POT-Creation-Date: 2026-10-29 18:29+0000\n"
+"PO-Revision-Date: 2026-10-29 18:29+0000\n"
+"Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -71,20 +71,17 @@ msgstr "Добавьте хотя бы один DNS-сервер"
 msgid "Add prefix to nodes"
 msgstr "Добавлять префикс к узлам"
 
-msgid "Add URLs or local paths to .lst lists containing domains, IP addresses, or CIDR ranges. DNS actions ignore IP entries."
-msgstr "Добавьте URL или локальные пути к спискам .lst с доменами, IP-адресами или CIDR-подсетями. Для действия DNS записи IP игнорируются."
-
 msgid "Add URLs or local paths to .lst lists containing domains and subnets."
 msgstr "Добавьте URL или локальные пути к спискам .lst с доменами и подсетями."
 
 msgid "Add URLs or local paths to .lst lists containing domains. IP entries are ignored."
 msgstr "Добавьте URL или локальные пути к спискам .lst с доменами. IP игнорируются."
 
-msgid "Add URLs or local paths to .srs / .json lists. Subnets are ignored by default."
-msgstr "Добавьте URL или локальные пути к спискам .srs / .json. Подсети по умолчанию игнорируются."
-
 msgid "Add URLs or local paths to .srs / .json lists. Only domain rules are supported."
 msgstr "Добавьте URL или локальные пути к спискам .srs / .json. Поддерживаются только доменные правила."
+
+msgid "Add URLs or local paths to .srs / .json lists. Subnets are ignored by default."
+msgstr "Добавьте URL или локальные пути к спискам .srs / .json. Подсети по умолчанию игнорируются."
 
 msgid "Add URLTest / Priority group"
 msgstr "Добавить URLTest / Приоритет группу"
@@ -168,7 +165,7 @@ msgid "Auto-generate HWID"
 msgstr "Авто-генерация HWID"
 
 msgid "Automatic component update checks"
-msgstr "Автоматическая проверка обновлений компонентов"
+msgstr "Проверять обновления компонентов"
 
 msgid "Automatic User-Agent selection"
 msgstr "Авто-подбор User-Agent"
@@ -192,7 +189,7 @@ msgid "Bootstrap DNS"
 msgstr "Bootstrap DNS"
 
 msgid "Bootstrap DNS Servers"
-msgstr "Bootstrap DNS-серверы"
+msgstr "DNS для начального подключения"
 
 msgid "Browser FakeIP check could not be completed"
 msgstr "Не удалось выполнить проверку FakeIP в браузере"
@@ -209,8 +206,8 @@ msgstr "Встроенные наборы правил"
 msgid "By flag emoji from name"
 msgstr "По эмодзи флага из названия"
 
-msgid "ByeDPI listen address and port are assigned by Forkop and must not be set in the strategy."
-msgstr "Адрес и порт прослушивания ByeDPI назначаются Forkop и не должны задаваться в стратегии."
+msgid "ByeDPI listen address and port are assigned by N7Flow and must not be set in the strategy."
+msgstr "Адрес и порт прослушивания ByeDPI назначаются N7Flow и не должны задаваться в стратегии."
 
 msgid "ByeDPI option does not accept a compact value: %s"
 msgstr "Опция ByeDPI не принимает компактное значение: %s"
@@ -246,7 +243,7 @@ msgid "ByeDPI strategy cannot be empty"
 msgstr "Стратегия ByeDPI не может быть пустой"
 
 msgid "Cache File Path"
-msgstr "Путь к файлу кэша"
+msgstr "Файл кэша"
 
 msgid "Cache file path cannot be empty"
 msgstr "Путь к файлу кэша не может быть пустым"
@@ -327,10 +324,10 @@ msgid "Component update available"
 msgstr "Доступно обновление компонента"
 
 msgid "Component update check interval"
-msgstr "Период проверки обновлений"
+msgstr "Интервал проверки обновлений"
 
 msgid "Components"
-msgstr "Компоненты"
+msgstr "Обновления"
 
 msgid "compressed"
 msgstr "compressed"
@@ -342,10 +339,7 @@ msgid "Conditions"
 msgstr "Условия"
 
 msgid "Config File Path"
-msgstr "Путь к файлу конфигурации"
-
-msgid "Configuration for Forkop service"
-msgstr "Настройки сервиса Forkop"
+msgstr "Файл конфигурации"
 
 msgid "Configure User-Agent in the item settings"
 msgstr "Настройте User-Agent в настройках элемента"
@@ -387,7 +381,7 @@ msgid "Custom outbound configurations in JSON format"
 msgstr "Пользовательские конфигурации outbound в формате JSON"
 
 msgid "Dashboard"
-msgstr "Дашборд"
+msgstr "Обзор"
 
 msgid "Dashboard currently unavailable"
 msgstr "Дашборд сейчас недоступен"
@@ -395,8 +389,8 @@ msgstr "Дашборд сейчас недоступен"
 msgid "Default address for checking server availability and latency. URLTest uses its own address."
 msgstr "Адрес по умолчанию для проверки доступности и задержки серверов. Для URLTest используется собственный адрес."
 
-msgid "Delay in milliseconds before reloading Forkop after interface UP"
-msgstr "Задержка в миллисекундах перед перезапуском Forkop после поднятия интерфейса"
+msgid "Delay in milliseconds before reloading N7Flow after interface UP"
+msgstr "Задержка в миллисекундах перед перезапуском N7Flow после поднятия интерфейса"
 
 msgid "Delay value cannot be empty"
 msgstr "Значение задержки не может быть пустым"
@@ -440,8 +434,8 @@ msgstr "Отключить QUIC"
 msgid "Disable the QUIC protocol to improve compatibility or fix issues with video streaming"
 msgstr "Отключить QUIC протокол для улучшения совместимости или исправления видео стриминга"
 
-msgid "Disabling interception is incompatible with action=zapret2 because Forkop sends matched traffic through NFQUEUE."
-msgstr "Отключение перехвата несовместимо с action=zapret2, потому что Forkop отправляет совпавший трафик через NFQUEUE."
+msgid "Disabling interception is incompatible with action=zapret2 because N7Flow sends matched traffic through NFQUEUE."
+msgstr "Отключение перехвата несовместимо с action=zapret2, потому что N7Flow отправляет совпавший трафик через NFQUEUE."
 
 msgid "Display name"
 msgstr "Отображаемое имя"
@@ -462,7 +456,7 @@ msgid "DNS protocol"
 msgstr "Протокол DNS"
 
 msgid "DNS Protocol Type"
-msgstr "Тип протокола DNS"
+msgstr "Протокол DNS"
 
 msgid "DNS protocol used by the resolver"
 msgstr "DNS-протокол, который будет использовать резолвер"
@@ -576,7 +570,7 @@ msgid "Downloaded"
 msgstr "Загружено"
 
 msgid "Drag rows to change priority. The rule at the top is checked first."
-msgstr "Перетаскивайте строки, чтобы изменить приоритет. Правило сверху проверяется первым."
+msgstr "Правила применяются сверху вниз. Перетащите строку, чтобы изменить порядок."
 
 msgid "Duplicate JSON outbound tag"
 msgstr "Такой тег JSON outbound уже используется"
@@ -683,11 +677,11 @@ msgstr "Истекает"
 msgid "Expose this section as a local HTTP+SOCKS proxy"
 msgstr "Открыть эту секцию как локальный HTTP+SOCKS прокси"
 
-msgid "External nfqws config files bypass Forkop queue management and explicit validation."
-msgstr "Внешние конфиги nfqws обходят управление очередями и явную валидацию Forkop."
+msgid "External nfqws config files bypass N7Flow queue management and explicit validation."
+msgstr "Внешние конфиги nfqws обходят управление очередями и явную валидацию N7Flow."
 
-msgid "External nfqws2 config files bypass Forkop queue management and explicit validation."
-msgstr "Внешние конфиги nfqws2 обходят управление очередями и явную валидацию Forkop."
+msgid "External nfqws2 config files bypass N7Flow queue management and explicit validation."
+msgstr "Внешние конфиги nfqws2 обходят управление очередями и явную валидацию N7Flow."
 
 msgid "Failed to close connection"
 msgstr "Не удалось закрыть подключение"
@@ -737,63 +731,6 @@ msgstr "Исправьте подсвеченные поля и сохранит
 msgid "Forced device routing"
 msgstr "Принудительная маршрутизация устройств"
 
-msgid "Forkop Error"
-msgstr "Ошибка Forkop"
-
-msgid "Forkop manages ciadpi pid files itself, so pidfile options are not allowed here."
-msgstr "Forkop сам управляет pid-файлами ciadpi, поэтому параметры pidfile здесь запрещены."
-
-msgid "Forkop manages the ciadpi process lifecycle itself, so daemon mode is not allowed here."
-msgstr "Forkop сам управляет жизненным циклом ciadpi, поэтому режим daemon здесь запрещён."
-
-msgid "Forkop manages the nfqws process lifecycle itself, so daemon mode is not allowed here."
-msgstr "Forkop сам управляет жизненным циклом nfqws, поэтому режим daemon здесь запрещён."
-
-msgid "Forkop manages the nfqws2 process lifecycle itself, so daemon mode is not allowed here."
-msgstr "Forkop сам управляет жизненным циклом nfqws2, поэтому режим daemon здесь запрещён."
-
-msgid "Forkop service is stopped. Start the service to display connections."
-msgstr "Служба Forkop остановлена. Запустите сервис для отображения подключений."
-
-msgid "Forkop service is stopped. Start the service to display the dashboard."
-msgstr "Служба Forkop остановлена. Запустите сервис для отображения дашборда."
-
-msgid "Forkop Settings"
-msgstr "Настройки Forkop"
-
-msgid "Forkop will not modify your DHCP configuration"
-msgstr "Forkop не будет изменять вашу конфигурацию DHCP"
-
-msgid "Forkop-managed ciadpi runtime has restarted"
-msgstr "ciadpi Forkop перезапускался"
-
-msgid "Forkop-managed ciadpi runtime is not ready"
-msgstr "ciadpi Forkop не готов"
-
-msgid "Forkop-managed ciadpi runtime is not running"
-msgstr "ciadpi Forkop не запущен"
-
-msgid "Forkop-managed ciadpi runtime is ready"
-msgstr "ciadpi Forkop готов"
-
-msgid "Forkop-managed nfqws runtime is not ready"
-msgstr "NFQWS Forkop не готов"
-
-msgid "Forkop-managed nfqws runtime is not running"
-msgstr "NFQWS Forkop не запущен"
-
-msgid "Forkop-managed nfqws runtime is ready"
-msgstr "NFQWS Forkop готов"
-
-msgid "Forkop-managed nfqws2 runtime is not ready"
-msgstr "NFQWS2 Forkop не готов"
-
-msgid "Forkop-managed nfqws2 runtime is not running"
-msgstr "NFQWS2 Forkop не запущен"
-
-msgid "Forkop-managed nfqws2 runtime is ready"
-msgstr "NFQWS2 Forkop готов"
-
 msgid "Fronting IP"
 msgstr "IP фронтинга"
 
@@ -803,8 +740,8 @@ msgstr "Порт фронтинга"
 msgid "Fronting proxy protocol"
 msgstr "Proxy protocol для фронтинга"
 
-msgid "Fuzzing is not supported here because Forkop needs deterministic runtime validation."
-msgstr "Fuzzing здесь не поддерживается, потому что Forkop нужна предсказуемая runtime-валидация."
+msgid "Fuzzing is not supported here because N7Flow needs deterministic runtime validation."
+msgstr "Fuzzing здесь не поддерживается, потому что N7Flow нужна предсказуемая runtime-валидация."
 
 msgid "Generate HWID from router hardware information for this subscription"
 msgstr "Генерировать HWID из аппаратной информации роутера для этой подписки"
@@ -936,7 +873,7 @@ msgid "Installed version is newer than release"
 msgstr "Установлена версия новее релиза"
 
 msgid "Interface Monitoring"
-msgstr "Мониторинг интерфейса"
+msgstr "Мониторинг интерфейсов"
 
 msgid "Interface Monitoring Delay"
 msgstr "Задержка при мониторинге интерфейсов"
@@ -964,6 +901,9 @@ msgstr "Неверный префикс CIDR"
 
 msgid "Invalid DNS server format. Examples: 8.8.8.8 or dns.example.com or dns.example.com/nicedns for DoH"
 msgstr "Неверный формат DNS-сервера. Примеры: 8.8.8.8, dns.example.com или dns.example.com/nicedns для DoH"
+
+msgid "Invalid DNS server port"
+msgstr "Недопустимый порт DNS-сервера"
 
 msgid "Invalid domain address"
 msgstr "Неверный домен"
@@ -1066,9 +1006,6 @@ msgstr "Неверный URL Shadowsocks: ошибка разбора"
 
 msgid "Invalid SOCKS URL: invalid host and port"
 msgstr "Некорректный SOCKS URL: некорректные хост и порт"
-
-msgid "Invalid SOCKS URL: invalid host format"
-msgstr "Неверный URL SOCKS: неверный формат хоста"
 
 msgid "Invalid SOCKS URL: invalid port number"
 msgstr "Неверный URL SOCKS: неверный номер порта"
@@ -1176,7 +1113,7 @@ msgid "List must be an HTTP(S) URL or a local .lst path"
 msgstr "Список должен быть HTTP(S) URL или локальным путём .lst"
 
 msgid "List Update Frequency"
-msgstr "Частота обновления списков"
+msgstr "Интервал обновления списков"
 
 msgid "Listen address"
 msgstr "Адрес прослушивания"
@@ -1236,10 +1173,67 @@ msgid "Monitored Interfaces"
 msgstr "Наблюдаемые интерфейсы"
 
 msgid "Monitoring"
-msgstr "Мониторинг"
+msgstr "Соединения"
 
 msgid "Must be a number in the range of 0 - 10000"
 msgstr "Должно быть числом в диапазоне 0 - 10000"
+
+msgid "N7Flow"
+msgstr "N7Flow"
+
+msgid "N7Flow Error"
+msgstr "Ошибка N7Flow"
+
+msgid "N7Flow manages ciadpi pid files itself, so pidfile options are not allowed here."
+msgstr "N7Flow сам управляет pid-файлами ciadpi, поэтому параметры pidfile здесь запрещены."
+
+msgid "N7Flow manages the ciadpi process lifecycle itself, so daemon mode is not allowed here."
+msgstr "N7Flow сам управляет жизненным циклом ciadpi, поэтому режим daemon здесь запрещён."
+
+msgid "N7Flow manages the nfqws process lifecycle itself, so daemon mode is not allowed here."
+msgstr "N7Flow сам управляет жизненным циклом nfqws, поэтому режим daemon здесь запрещён."
+
+msgid "N7Flow manages the nfqws2 process lifecycle itself, so daemon mode is not allowed here."
+msgstr "N7Flow сам управляет жизненным циклом nfqws2, поэтому режим daemon здесь запрещён."
+
+msgid "N7Flow service is stopped. Start the service to display connections."
+msgstr "Служба N7Flow остановлена. Запустите сервис для отображения подключений."
+
+msgid "N7Flow service is stopped. Start the service to display the dashboard."
+msgstr "Служба N7Flow остановлена. Запустите сервис для отображения дашборда."
+
+msgid "N7Flow will not modify your DHCP configuration"
+msgstr "N7Flow не будет изменять вашу конфигурацию DHCP"
+
+msgid "N7Flow-managed ciadpi runtime has restarted"
+msgstr "ciadpi N7Flow перезапускался"
+
+msgid "N7Flow-managed ciadpi runtime is not ready"
+msgstr "ciadpi N7Flow не готов"
+
+msgid "N7Flow-managed ciadpi runtime is not running"
+msgstr "ciadpi N7Flow не запущен"
+
+msgid "N7Flow-managed ciadpi runtime is ready"
+msgstr "ciadpi N7Flow готов"
+
+msgid "N7Flow-managed nfqws runtime is not ready"
+msgstr "NFQWS N7Flow не готов"
+
+msgid "N7Flow-managed nfqws runtime is not running"
+msgstr "NFQWS N7Flow не запущен"
+
+msgid "N7Flow-managed nfqws runtime is ready"
+msgstr "NFQWS N7Flow готов"
+
+msgid "N7Flow-managed nfqws2 runtime is not ready"
+msgstr "NFQWS2 N7Flow не готов"
+
+msgid "N7Flow-managed nfqws2 runtime is not running"
+msgstr "NFQWS2 N7Flow не запущен"
+
+msgid "N7Flow-managed nfqws2 runtime is ready"
+msgstr "NFQWS2 N7Flow готов"
 
 msgid "Name displayed on the dashboard"
 msgstr "Имя, которое отображается в дашборде"
@@ -1368,7 +1362,7 @@ msgid "Only the specified servers."
 msgstr "Только указанные серверы."
 
 msgid "Open"
-msgstr ""
+msgstr "Открыть"
 
 msgid "Open priority settings and enter a display name"
 msgstr "Откройте настройки приоритета и укажите отображаемое имя"
@@ -1547,8 +1541,8 @@ msgstr "Выбор ресурсов по IP или CIDR внутри nfqws зд�
 msgid "Resource selection by IP or CIDR inside nfqws2 is not supported here; sing-box selects resources before NFQUEUE."
 msgstr "Выбор ресурсов по IP или CIDR внутри nfqws2 здесь не поддерживается; sing-box выбирает ресурсы до NFQUEUE."
 
-msgid "Restart Forkop"
-msgstr "Перезапустить Forkop"
+msgid "Restart N7Flow"
+msgstr "Перезапустить N7Flow"
 
 msgid "Resume updates"
 msgstr "Продолжить обновление"
@@ -1617,13 +1611,13 @@ msgid "Secret key for authenticating remote access to YACD when WAN access is en
 msgstr "Секретный ключ для аутентификации удаленного доступа к YACD при включенном доступе через WAN."
 
 msgid "Section"
-msgstr "Секция"
+msgstr "Правило"
 
 msgid "Section name"
 msgstr "Имя секции"
 
 msgid "Sections"
-msgstr "Секции"
+msgstr "Правила"
 
 msgid "Security"
 msgstr "Защита"
@@ -1737,7 +1731,7 @@ msgid "Service list"
 msgstr "Список сервисов"
 
 msgid "Services info"
-msgstr "Информация о сервисах"
+msgstr "Службы"
 
 msgid "Settings"
 msgstr "Настройки"
@@ -1806,7 +1800,7 @@ msgid "Source"
 msgstr "Источник"
 
 msgid "Source Network Interface"
-msgstr "Сетевой интерфейс источника"
+msgstr "Интерфейсы источников"
 
 msgid "Specify a file path"
 msgstr "Укажите путь к файлу"
@@ -1817,8 +1811,8 @@ msgstr "Укажите разные файлы"
 msgid "Standalone ByeDPI autostart is enabled"
 msgstr "Автозапуск отдельной службы ByeDPI включен"
 
-msgid "Standalone ByeDPI is active together with Forkop ByeDPI rules"
-msgstr "Отдельная служба ByeDPI активна вместе с правилами ByeDPI в Forkop"
+msgid "Standalone ByeDPI is active together with N7Flow ByeDPI rules"
+msgstr "Отдельная служба ByeDPI активна вместе с правилами ByeDPI в N7Flow"
 
 msgid "Standalone ByeDPI service is active"
 msgstr "Отдельная служба ByeDPI активна"
@@ -1826,8 +1820,8 @@ msgstr "Отдельная служба ByeDPI активна"
 msgid "Standalone ByeDPI service is inactive"
 msgstr "Отдельная служба ByeDPI неактивна"
 
-msgid "Standalone Zapret is active together with Forkop Zapret rules"
-msgstr "Отдельная служба Zapret активна вместе с правилами Zapret в Forkop"
+msgid "Standalone Zapret is active together with N7Flow Zapret rules"
+msgstr "Отдельная служба Zapret активна вместе с правилами Zapret в N7Flow"
 
 msgid "Standalone Zapret service is active"
 msgstr "Отдельная служба Zapret активна"
@@ -1838,8 +1832,8 @@ msgstr "Отдельная служба Zapret неактивна"
 msgid "Standalone Zapret2 autostart is enabled"
 msgstr "Автозапуск отдельной службы Zapret2 включён"
 
-msgid "Standalone Zapret2 is active together with Forkop Zapret2 rules"
-msgstr "Отдельная служба Zapret2 активна вместе с правилами Zapret2 в Forkop"
+msgid "Standalone Zapret2 is active together with N7Flow Zapret2 rules"
+msgstr "Отдельная служба Zapret2 активна вместе с правилами Zapret2 в N7Flow"
 
 msgid "Standalone Zapret2 service is active"
 msgstr "Отдельная служба Zapret2 активна"
@@ -1847,14 +1841,14 @@ msgstr "Отдельная служба Zapret2 активна"
 msgid "Standalone Zapret2 service is inactive"
 msgstr "Отдельная служба Zapret2 неактивна"
 
-msgid "Start Forkop"
-msgstr "Запустить Forkop"
+msgid "Start N7Flow"
+msgstr "Запустить N7Flow"
 
 msgid "Stop checking when URLTest group is not used. Use sing-box duration format like 1d, 12h or 30m."
 msgstr "Останавливать проверку если URLTest группа не используется. Используйте формат длительности sing-box, например 1d, 12h или 30m."
 
-msgid "Stop Forkop"
-msgstr "Остановить Forkop"
+msgid "Stop N7Flow"
+msgstr "Остановить N7Flow"
 
 msgid "Subnets from the list will be extracted and added to nftables"
 msgstr "IP-адреса и подсети из списка будут извлечены и добавлены в nftables"
@@ -1874,9 +1868,6 @@ msgstr "Интервал обновления подписки"
 msgid "Subscription URL"
 msgstr "URL подписки"
 
-msgid "Subscription URL cannot be empty"
-msgstr "URL подписки не может быть пустым"
-
 msgid "Subscription URL settings"
 msgstr "Настройки URL подписки"
 
@@ -1884,7 +1875,7 @@ msgid "Subscriptions updated"
 msgstr "Подписки обновлены"
 
 msgid "System info"
-msgstr "Системная информация"
+msgstr "Система"
 
 msgid "System information"
 msgstr "Системная информация"
@@ -1896,13 +1887,13 @@ msgid "Tailscale auth key"
 msgstr "Ключ авторизации Tailscale"
 
 msgid "Tailscale control URL"
-msgstr "URL control plane Tailscale"
+msgstr "URL сервера управления Tailscale"
 
 msgid "Tailscale endpoint"
 msgstr "Tailscale endpoint"
 
 msgid "Tailscale hostname"
-msgstr "Hostname Tailscale"
+msgstr "Имя узла Tailscale"
 
 msgid "Test latency"
 msgstr "Тестирование задержки"
@@ -1928,11 +1919,11 @@ msgstr "Тестировать серверы, имена которых сов�
 msgid "Testing URL"
 msgstr "URL проверки"
 
-msgid "The desync fwmark is managed by Forkop for loop prevention and must not be overridden here."
-msgstr "Desync fwmark управляется Forkop для защиты от циклов и не должен переопределяться здесь."
+msgid "The desync fwmark is managed by N7Flow for loop prevention and must not be overridden here."
+msgstr "Desync fwmark управляется N7Flow для защиты от циклов и не должен переопределяться здесь."
 
-msgid "The NFQUEUE number is assigned by Forkop for each rule and must not be overridden here."
-msgstr "Номер NFQUEUE назначается Forkop для каждого правила и не должен переопределяться здесь."
+msgid "The NFQUEUE number is assigned by N7Flow for each rule and must not be overridden here."
+msgstr "Номер NFQUEUE назначается N7Flow для каждого правила и не должен переопределяться здесь."
 
 msgid "The rule applies to the domain and all its subdomains. Use full:, keyword:, or regex: prefixes for exact match, keyword match, or regular expression."
 msgstr "Правило применяется к домену и всем его поддоменам. Для полного совпадения, совпадению по слову или регулярному выражению используйте префиксы full:, keyword: или regex:."
@@ -1997,8 +1988,8 @@ msgstr "Трафик этого уровня пойдёт напрямую."
 msgid "Traffic Total"
 msgstr "Всего трафика"
 
-msgid "Transparent proxy mode is incompatible with action=byedpi because Forkop connects to ciadpi through SOCKS."
-msgstr "Режим прозрачного прокси несовместим с action=byedpi, потому что Forkop подключается к ciadpi через SOCKS."
+msgid "Transparent proxy mode is incompatible with action=byedpi because N7Flow connects to ciadpi through SOCKS."
+msgstr "Режим прозрачного прокси несовместим с action=byedpi, потому что N7Flow подключается к ciadpi через SOCKS."
 
 msgid "Transport"
 msgstr "Транспорт"
@@ -2045,14 +2036,14 @@ msgstr "Таймаут недоступности"
 msgid "Unexpected ByeDPI strategy argument: %s"
 msgstr "Неожиданный аргумент стратегии ByeDPI: %s"
 
-msgid "Unexpected Forkop-managed ciadpi runtime is running"
-msgstr "Обнаружен лишний ciadpi Forkop"
+msgid "Unexpected N7Flow-managed ciadpi runtime is running"
+msgstr "Обнаружен лишний ciadpi N7Flow"
 
-msgid "Unexpected Forkop-managed nfqws runtime is running"
-msgstr "Обнаружен лишний NFQWS Forkop"
+msgid "Unexpected N7Flow-managed nfqws runtime is running"
+msgstr "Обнаружен лишний NFQWS N7Flow"
 
-msgid "Unexpected Forkop-managed nfqws2 runtime is running"
-msgstr "Обнаружен лишний NFQWS2 Forkop"
+msgid "Unexpected N7Flow-managed nfqws2 runtime is running"
+msgstr "Обнаружен лишний NFQWS2 N7Flow"
 
 msgid "Unexpected standalone token. Use explicit flags such as --name or --name=value."
 msgstr "Неожиданный отдельный токен. Используйте явные флаги вида --имя или --имя=значение."
@@ -2210,14 +2201,17 @@ msgstr "VLESS flow"
 msgid "vless://, vmess://, ss://, trojan://, socks4/5://, hy2/hysteria2:// links"
 msgstr "ссылки vless://, vmess://, ss://, trojan://, socks4/5://, hy2/hysteria2://"
 
+msgid "VPN, DNS and traffic routing"
+msgstr "VPN, DNS и маршрутизация"
+
 msgid "WAN"
 msgstr "WAN"
 
 msgid "WAN public IP"
 msgstr "Публичный WAN IP"
 
-msgid "What Forkop should do when this section matches"
-msgstr "Что Forkop должен делать при совпадении этой секции"
+msgid "What N7Flow should do when this section matches"
+msgstr "Что N7Flow должен делать при совпадении этой секции"
 
 msgid "When switching to another level, test every server and select the fastest instead of the first working one."
 msgstr "При переходе на другой уровень тестировать все сервера и выбирать самый быстрый, а не первый работающий."
@@ -2234,8 +2228,8 @@ msgstr "Да"
 msgid "You can select Output Network Interface, by default autodetect"
 msgstr "Вы можете выбрать выходной сетевой интерфейс, по умолчанию он определяется автоматически."
 
-msgid "Zapret hostlist templates are not supported here because Forkop does not expand them for per-rule NFQWS strategies."
-msgstr "Шаблоны hostlist zapret здесь не поддерживаются, потому что Forkop не разворачивает их для per-rule стратегий NFQWS."
+msgid "Zapret hostlist templates are not supported here because N7Flow does not expand them for per-rule NFQWS strategies."
+msgstr "Шаблоны hostlist zapret здесь не поддерживаются, потому что N7Flow не разворачивает их для per-rule стратегий NFQWS."
 
 msgid "Zapret package is installed"
 msgstr "Пакет Zapret установлен"
@@ -2255,8 +2249,8 @@ msgstr "sing-box outbound для Zapret настроен"
 msgid "Zapret sing-box outbound is not configured"
 msgstr "sing-box outbound для Zapret не настроен"
 
-msgid "Zapret2 hostlist templates are not supported here because Forkop does not expand them for per-rule NFQWS2 strategies."
-msgstr "Шаблоны hostlist Zapret2 здесь не поддерживаются, потому что Forkop не разворачивает их для per-rule стратегий NFQWS2."
+msgid "Zapret2 hostlist templates are not supported here because N7Flow does not expand them for per-rule NFQWS2 strategies."
+msgstr "Шаблоны hostlist Zapret2 здесь не поддерживаются, потому что N7Flow не разворачивает их для per-rule стратегий NFQWS2."
 
 msgid "Zapret2 package is installed"
 msgstr "Пакет Zapret2 установлен"

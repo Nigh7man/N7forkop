@@ -5390,7 +5390,7 @@ function validateNfqwsStrategyRemotely(value) {
 
 function getNfqwsForbiddenTokenInfo(token, index) {
   const configFileMessage = _(
-    "External nfqws config files bypass Forkop queue management and explicit validation.",
+    "External nfqws config files bypass N7Flow queue management and explicit validation.",
   );
   const hostSelectionMessage = _(
     "Resource selection by hostname inside nfqws is not supported here; sing-box selects resources before NFQUEUE.",
@@ -5399,16 +5399,16 @@ function getNfqwsForbiddenTokenInfo(token, index) {
     "Resource selection by IP or CIDR inside nfqws is not supported here; sing-box selects resources before NFQUEUE.",
   );
   const placeholderMessage = _(
-    "Zapret hostlist templates are not supported here because Forkop does not expand them for per-rule NFQWS strategies.",
+    "Zapret hostlist templates are not supported here because N7Flow does not expand them for per-rule NFQWS strategies.",
   );
   const queueMessage = _(
-    "The NFQUEUE number is assigned by Forkop for each rule and must not be overridden here.",
+    "The NFQUEUE number is assigned by N7Flow for each rule and must not be overridden here.",
   );
   const fwmarkMessage = _(
-    "The desync fwmark is managed by Forkop for loop prevention and must not be overridden here.",
+    "The desync fwmark is managed by N7Flow for loop prevention and must not be overridden here.",
   );
   const daemonMessage = _(
-    "Forkop manages the nfqws process lifecycle itself, so daemon mode is not allowed here.",
+    "N7Flow manages the nfqws process lifecycle itself, so daemon mode is not allowed here.",
   );
   const dryRunMessage = _(
     "This field must start a working nfqws strategy; --dry-run exits immediately and is not allowed here.",
@@ -5835,7 +5835,7 @@ function validateNfqws2StrategyRemotely(value) {
 
 function getNfqws2ForbiddenTokenInfo(token, index, nextToken) {
   const configFileMessage = _(
-    "External nfqws2 config files bypass Forkop queue management and explicit validation.",
+    "External nfqws2 config files bypass N7Flow queue management and explicit validation.",
   );
   const hostSelectionMessage = _(
     "Resource selection by hostname inside nfqws2 is not supported here; sing-box selects resources before NFQUEUE.",
@@ -5844,22 +5844,22 @@ function getNfqws2ForbiddenTokenInfo(token, index, nextToken) {
     "Resource selection by IP or CIDR inside nfqws2 is not supported here; sing-box selects resources before NFQUEUE.",
   );
   const placeholderMessage = _(
-    "Zapret2 hostlist templates are not supported here because Forkop does not expand them for per-rule NFQWS2 strategies.",
+    "Zapret2 hostlist templates are not supported here because N7Flow does not expand them for per-rule NFQWS2 strategies.",
   );
   const queueMessage = _(
-    "The NFQUEUE number is assigned by Forkop for each rule and must not be overridden here.",
+    "The NFQUEUE number is assigned by N7Flow for each rule and must not be overridden here.",
   );
   const fwmarkMessage = _(
-    "The desync fwmark is managed by Forkop for loop prevention and must not be overridden here.",
+    "The desync fwmark is managed by N7Flow for loop prevention and must not be overridden here.",
   );
   const fuzzMessage = _(
-    "Fuzzing is not supported here because Forkop needs deterministic runtime validation.",
+    "Fuzzing is not supported here because N7Flow needs deterministic runtime validation.",
   );
   const interceptMessage = _(
-    "Disabling interception is incompatible with action=zapret2 because Forkop sends matched traffic through NFQUEUE.",
+    "Disabling interception is incompatible with action=zapret2 because N7Flow sends matched traffic through NFQUEUE.",
   );
   const daemonMessage = _(
-    "Forkop manages the nfqws2 process lifecycle itself, so daemon mode is not allowed here.",
+    "N7Flow manages the nfqws2 process lifecycle itself, so daemon mode is not allowed here.",
   );
   const dryRunMessage = _(
     "This field must start a working nfqws2 strategy; --dry-run exits immediately and is not allowed here.",
@@ -6255,16 +6255,16 @@ function byedpiTokenLooksLikeOption(token) {
 
 function getByedpiControlledTokenInfo(token) {
   const listenMessage = _(
-    "ByeDPI listen address and port are assigned by Forkop and must not be set in the strategy.",
+    "ByeDPI listen address and port are assigned by N7Flow and must not be set in the strategy.",
   );
   const transparentMessage = _(
-    "Transparent proxy mode is incompatible with action=byedpi because Forkop connects to ciadpi through SOCKS.",
+    "Transparent proxy mode is incompatible with action=byedpi because N7Flow connects to ciadpi through SOCKS.",
   );
   const daemonMessage = _(
-    "Forkop manages the ciadpi process lifecycle itself, so daemon mode is not allowed here.",
+    "N7Flow manages the ciadpi process lifecycle itself, so daemon mode is not allowed here.",
   );
   const pidfileMessage = _(
-    "Forkop manages ciadpi pid files itself, so pidfile options are not allowed here.",
+    "N7Flow manages ciadpi pid files itself, so pidfile options are not allowed here.",
   );
   const exitMessage = _(
     "This field must start a working ciadpi strategy; help/version options exit immediately and are not allowed here.",
@@ -6997,7 +6997,7 @@ function createSectionContent(section) {
     form.ListValue,
     "action",
     _("Action"),
-    _("What Forkop should do when this section matches"),
+    _("What N7Flow should do when this section matches"),
   );
   populateActionOptionValues(o);
   o.default = "connection";

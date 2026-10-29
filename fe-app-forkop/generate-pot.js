@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 
 const inputFile = 'locales/calls.json';
 const outputFile = 'locales/forkop.pot';
-const projectId = 'FORKOP';
+const projectId = 'N7Flow';
 
 function getGitUser() {
   try {
