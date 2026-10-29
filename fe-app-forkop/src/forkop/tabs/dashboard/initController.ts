@@ -1650,7 +1650,7 @@ async function renderServicesInfoWidget() {
     title: _('Services info'),
     items: [
       {
-        key: 'Forkop',
+        key: 'N7Flow',
         value: servicesInfoWidget.data.forkopRunning
           ? _('✔ Running')
           : _('✘ Stopped'),

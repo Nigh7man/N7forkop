@@ -2227,7 +2227,7 @@ function render() {
           role: "status"
         },
         _(
-          "Forkop service is stopped. Start the service to display the dashboard."
+          "N7Flow service is stopped. Start the service to display the dashboard."
         )
       ),
       E("div", { class: "fkp_dashboard-page__content" }, [
@@ -5047,7 +5047,7 @@ var LOG_WATCHER_INTERVAL_MS = 1e4;
 var LOG_WATCHER_START_DELAY_MS = 5e3;
 function componentDisplayName(component) {
   const names = {
-    forkop: "Forkop",
+    forkop: "N7Flow",
     sing_box: "sing-box",
     zapret: "Zapret",
     zapret2: "Zapret2",
@@ -5067,7 +5067,7 @@ function showLogNotification(notification) {
     return;
   }
   ui.addNotification(
-    _("Forkop Error"),
+    _("N7Flow Error"),
     E("div", {}, notification.line),
     "error",
     "fkp-log-error-notification"
@@ -6712,7 +6712,7 @@ async function renderServicesInfoWidget() {
     title: _("Services info"),
     items: [
       {
-        key: "Forkop",
+        key: "N7Flow",
         value: servicesInfoWidget.data.forkopRunning ? _("\u2714 Running") : _("\u2718 Stopped"),
         attributes: {
           class: servicesInfoWidget.data.forkopRunning ? "fkp_dashboard-page__widgets-section__item__row--success" : "fkp_dashboard-page__widgets-section__item__row--error"
@@ -8133,7 +8133,7 @@ async function runZapretCheck() {
     },
     {
       state: unexpectedRuntime || !forkopRuntimeReady ? "error" : "success",
-      key: hasZapretRules ? forkopRuntimeReady ? _("Forkop-managed nfqws runtime is ready") : _("Forkop-managed nfqws runtime is not ready") : unexpectedRuntime ? _("Unexpected Forkop-managed nfqws runtime is running") : _("Forkop-managed nfqws runtime is not running"),
+      key: hasZapretRules ? forkopRuntimeReady ? _("N7Flow-managed nfqws runtime is ready") : _("N7Flow-managed nfqws runtime is not ready") : unexpectedRuntime ? _("Unexpected N7Flow-managed nfqws runtime is running") : _("N7Flow-managed nfqws runtime is not running"),
       value: hasZapretRules ? `${runningProcesses}/${expectedProcesses}` : ""
     },
     {
@@ -8148,7 +8148,7 @@ async function runZapretCheck() {
     },
     {
       state: standaloneConflict ? "warning" : "success",
-      key: standaloneServiceRunning ? hasZapretRules ? _("Standalone Zapret is active together with Forkop Zapret rules") : _("Standalone Zapret service is active") : _("Standalone Zapret service is inactive"),
+      key: standaloneServiceRunning ? hasZapretRules ? _("Standalone Zapret is active together with N7Flow Zapret rules") : _("Standalone Zapret service is active") : _("Standalone Zapret service is inactive"),
       value: ""
     }
   ];
@@ -8219,7 +8219,7 @@ async function runZapret2Check() {
     },
     {
       state: unexpectedRuntime || !forkopRuntimeReady ? "error" : "success",
-      key: hasZapret2Rules ? forkopRuntimeReady ? _("Forkop-managed nfqws2 runtime is ready") : _("Forkop-managed nfqws2 runtime is not ready") : unexpectedRuntime ? _("Unexpected Forkop-managed nfqws2 runtime is running") : _("Forkop-managed nfqws2 runtime is not running"),
+      key: hasZapret2Rules ? forkopRuntimeReady ? _("N7Flow-managed nfqws2 runtime is ready") : _("N7Flow-managed nfqws2 runtime is not ready") : unexpectedRuntime ? _("Unexpected N7Flow-managed nfqws2 runtime is running") : _("N7Flow-managed nfqws2 runtime is not running"),
       value: hasZapret2Rules ? `${runningProcesses}/${expectedProcesses}` : ""
     },
     {
@@ -8234,7 +8234,7 @@ async function runZapret2Check() {
     },
     {
       state: standaloneConflict ? "error" : standaloneAutostartRisk ? "warning" : "success",
-      key: standaloneServiceRunning ? hasZapret2Rules ? _("Standalone Zapret2 is active together with Forkop Zapret2 rules") : _("Standalone Zapret2 service is active") : standaloneAutostartRisk ? _("Standalone Zapret2 autostart is enabled") : _("Standalone Zapret2 service is inactive"),
+      key: standaloneServiceRunning ? hasZapret2Rules ? _("Standalone Zapret2 is active together with N7Flow Zapret2 rules") : _("Standalone Zapret2 service is active") : standaloneAutostartRisk ? _("Standalone Zapret2 autostart is enabled") : _("Standalone Zapret2 service is inactive"),
       value: ""
     }
   ];
@@ -8306,7 +8306,7 @@ async function runByedpiCheck() {
     },
     {
       state: unexpectedRuntime || !forkopRuntimeReady ? "error" : runtimeUnstable ? "warning" : "success",
-      key: hasByedpiRules ? runtimeUnstable ? _("Forkop-managed ciadpi runtime has restarted") : forkopRuntimeReady ? _("Forkop-managed ciadpi runtime is ready") : _("Forkop-managed ciadpi runtime is not ready") : unexpectedRuntime ? _("Unexpected Forkop-managed ciadpi runtime is running") : _("Forkop-managed ciadpi runtime is not running"),
+      key: hasByedpiRules ? runtimeUnstable ? _("N7Flow-managed ciadpi runtime has restarted") : forkopRuntimeReady ? _("N7Flow-managed ciadpi runtime is ready") : _("N7Flow-managed ciadpi runtime is not ready") : unexpectedRuntime ? _("Unexpected N7Flow-managed ciadpi runtime is running") : _("N7Flow-managed ciadpi runtime is not running"),
       value: hasByedpiRules ? runtimeUnstable ? `${restartCount}` : `${runningProcesses}/${expectedProcesses}` : ""
     },
     {
@@ -8316,7 +8316,7 @@ async function runByedpiCheck() {
     },
     {
       state: standaloneConflict ? "error" : standaloneAutostartRisk ? "warning" : "success",
-      key: standaloneServiceRunning ? hasByedpiRules ? _("Standalone ByeDPI is active together with Forkop ByeDPI rules") : _("Standalone ByeDPI service is active") : standaloneAutostartRisk ? _("Standalone ByeDPI autostart is enabled") : _("Standalone ByeDPI service is inactive"),
+      key: standaloneServiceRunning ? hasByedpiRules ? _("Standalone ByeDPI is active together with N7Flow ByeDPI rules") : _("Standalone ByeDPI service is active") : standaloneAutostartRisk ? _("Standalone ByeDPI autostart is enabled") : _("Standalone ByeDPI service is inactive"),
       value: ""
     }
   ];
@@ -8839,7 +8839,7 @@ function renderAvailableActions({
         classNames: ["cbi-button-apply"],
         onClick: restart.onClick,
         icon: renderRotateCcwIcon24,
-        text: _("Restart Forkop"),
+        text: _("Restart N7Flow"),
         loading: restart.loading,
         disabled: restart.disabled
       })
@@ -8849,7 +8849,7 @@ function renderAvailableActions({
         classNames: ["cbi-button-remove"],
         onClick: stop.onClick,
         icon: renderCircleStopIcon24,
-        text: _("Stop Forkop"),
+        text: _("Stop N7Flow"),
         loading: stop.loading,
         disabled: stop.disabled
       })
@@ -8859,7 +8859,7 @@ function renderAvailableActions({
         classNames: ["cbi-button-save"],
         onClick: start.onClick,
         icon: renderCirclePlayIcon24,
-        text: _("Start Forkop"),
+        text: _("Start N7Flow"),
         loading: start.loading,
         disabled: start.disabled
       })
@@ -10300,7 +10300,7 @@ function renderDiagnosticSystemInfoWidget() {
   const container = document.getElementById("fkp_diagnostic-page-system-info");
   const items = [
     {
-      key: "Forkop",
+      key: "N7Flow",
       value: normalizeCompiledVersion(diagnosticsSystemInfo.forkop_version)
     },
     {
@@ -11560,7 +11560,7 @@ function renderConnections(options = {}) {
     container.replaceChildren(
       renderConnectionsTable([], {
         text: _(
-          "Forkop service is stopped. Start the service to display connections."
+          "N7Flow service is stopped. Start the service to display connections."
         )
       })
     );
@@ -13436,7 +13436,7 @@ function getComponentCards() {
     {
       component: "forkop",
       column: 0,
-      title: "Forkop",
+      title: "N7Flow",
       version: systemInfoLoading ? _("Loading...") : normalizeCompiledVersion(systemInfo.forkop_version),
       latestVersion: getLatestVersion("forkop"),
       releaseUrl: getGitHubReleaseUrl("forkop"),

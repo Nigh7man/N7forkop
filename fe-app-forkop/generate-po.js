@@ -37,14 +37,14 @@ function getHeader(lang) {
       : 'nplurals=2; plural=(n != 1);';
 
   return [
-    `# ${lang.toUpperCase()} translations for FORKOP package.`,
-    `# Copyright (C) ${now.getFullYear()} THE FORKOP COPYRIGHT HOLDER`,
-    `# This file is distributed under the same license as the FORKOP package.`,
+    `# ${lang.toUpperCase()} translations for N7Flow package.`,
+    `# Copyright (C) ${now.getFullYear()} THE N7Flow COPYRIGHT HOLDER`,
+    `# This file is distributed under the same license as the N7Flow package.`,
     `# ${translator}, ${now.getFullYear()}.`,
     '#',
     'msgid ""',
     'msgstr ""',
-    `"Project-Id-Version: FORKOP\\n"`,
+    `"Project-Id-Version: N7Flow\\n"`,
     `"Report-Msgid-Bugs-To: \\n"`,
     `"POT-Creation-Date: ${date} ${time}${tzOffset}\\n"`,
     `"PO-Revision-Date: ${date} ${time}${tzOffset}\\n"`,

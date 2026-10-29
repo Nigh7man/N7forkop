@@ -907,7 +907,7 @@ function renderDiagnosticSystemInfoWidget() {
 
   const items = [
     {
-      key: 'Forkop',
+      key: 'N7Flow',
       value: normalizeCompiledVersion(diagnosticsSystemInfo.forkop_version),
     },
     {
