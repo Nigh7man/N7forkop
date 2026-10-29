@@ -54,6 +54,19 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const config=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
 const routes=config.route.rules;
+const sourceDnsIn=config.inbounds.find(x=>x.tag==='source-dns-in');
+assert.ok(sourceDnsIn && sourceDnsIn.listen_port===1603,
+  'source-filtered DNS requires the redirected port 1603');
+const sourceHijackAt=routes.findIndex(r=>
+  r.action==='hijack-dns' && r.inbound==='source-dns-in');
+assert.ok(sourceHijackAt>=0,
+  'source-dns-in must unconditionally hijack DNS before falling back to direct-out');
+assert.ok(sourceHijackAt>routes.findIndex(r=>r.action==='sniff'),
+  'DNS sniff must precede source inbound hijack');
+assert.ok(sourceHijackAt<routes.findIndex(r=>r.action==='hijack-dns' && r.port===53),
+  'the source DNS inbound must be hijacked regardless of the redirected destination port');
+assert.ok(sourceHijackAt<routes.findIndex(r=>r.action==='hijack-dns' && r.protocol==='dns'),
+  'the source DNS inbound must be hijacked even when TCP DNS sniffing fails');
 const outbounds=new Map(config.outbounds.map(x=>[x.tag,x]));
 const source=routes.map((r,i)=>[r,i]).find(([r])=>
   Array.isArray(r.source_ip_cidr) && r.source_ip_cidr.length===3);

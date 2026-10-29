@@ -24,12 +24,19 @@ function config(settings, runtime) {
     if (type(runtime) == "object" && type(runtime.dns_health_inbounds) == "array")
         for (let inbound in runtime.dns_health_inbounds)
             push(sniff_inbounds, inbound);
+    // DNS from source-filtered LAN clients is DNAT-redirected from :53 to
+    // source-dns-in (:1603). The direct inbound exposes the redirected port,
+    // not necessarily :53. Sniffing is best-effort (especially for TCP DNS):
+    // without an explicit inbound rule an unrecognized stream can fall through
+    // to direct-out, which connects right back to :1603 and exhausts FDs.
+    let rules = [ { action: "sniff", inbound: sniff_inbounds } ];
+    if (type(runtime) == "object" && bool_value(runtime.source_aware_dns))
+        push(rules, { action: "hijack-dns", inbound: runtime_constants.SOURCE_DNS_INBOUND_TAG });
+    push(rules, { action: "hijack-dns", port: 53 });
+    push(rules, { action: "hijack-dns", protocol: "dns" });
+
     let result = {
-        rules: [
-            { action: "sniff", inbound: sniff_inbounds },
-            { action: "hijack-dns", port: 53 },
-            { action: "hijack-dns", protocol: "dns" }
-        ],
+        rules,
         rule_set: [],
         final: runtime_constants.DIRECT_OUTBOUND_TAG,
         auto_detect_interface: output_network_interface == "" && !mwan3_active,
